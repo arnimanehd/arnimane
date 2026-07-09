@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Friend | Arnimane</title>
+  <title>Friends | Arnimane</title>
   <meta name="theme-color" content="#06010f"/>
   <link rel="icon" href="/favicon.ico"/>
   <link rel="stylesheet" href="/style.css"/>
@@ -56,17 +56,20 @@
     </div>
   </div>
 </header>
-  <main class="friend-main fade-in">
-    <section class="friend-card panel">
-      <a class="back-link" href="/friends.html">← BACK TO FRIENDS</a>
-      <div class="friend-avatar" id="friendAvatar">🐺</div>
-      <p class="friend-kicker">FRIEND OF THE CHAOS</p>
-      <h1 id="friendName">Wolfie</h1>
-      <p id="friendBio">Loading bio…</p>
-      <div class="friend-links" id="friendLinks"></div>
+  <main class="page-main fade-in">
+    <section class="page-hero panel">
+      <p class="friend-kicker">FRIENDS</p>
+      <h1>The Chaos Crew</h1>
+      <p>Friends, collaborators, and regular chaos partners who help make the streams even more unpredictable.</p>
+    </section>
+
+    <section class="friends-grid" id="friendsGrid">
+      <a class="friend-tile panel" href="/friend.html?friend=jmmackle"><div class="friend-avatar tile-avatar" data-login="jmmackle">🧢</div><h2>JMMackle</h2><p>Chaotic co-op energy and highlight-worthy bad ideas.</p></a>
+      <a class="friend-tile panel" href="/friend.html?friend=mortuarykittenx"><div class="friend-avatar tile-avatar" data-login="mortuarykittenx">🔪</div><h2>MortuaryKittenx</h2><p>Horror vibes, killer gameplay, and stream-ready chaos.</p></a>
+      <a class="friend-tile panel" href="/friend.html?friend=wolfie"><div class="friend-avatar tile-avatar" data-login="mr_wildwolfie">🐺</div><h2>Wolfie</h2><p>Pack energy, jokes, and unpredictable gaming moments.</p></a>
     </section>
   </main>
   <script src="/mobile-follow.js"></script>
-  <script src="/friend.js"></script>
+  <script src="/friends.js"></script>
 </body>
 </html>

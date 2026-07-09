@@ -8,6 +8,10 @@
     {
       "source": "/api/twitch-status",
       "destination": "/api/twitch-status.js"
+    },
+    {
+      "source": "/api/friends",
+      "destination": "/api/friends.js"
     }
   ]
 }

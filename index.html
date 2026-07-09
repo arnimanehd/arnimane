@@ -13,84 +13,105 @@
 </head>
 <body>
   <div class="page-overlay"></div>
-
   <header class="topbar">
-    <a class="brand" href="/">
-      <img src="/assets/logo.png" alt="Arnimane logo">
-      <div>
-        <div class="brand-name">ARNIMANE</div>
-        <div class="brand-tag">JOIN THE ADVENTURE. EMBRACE THE CHAOS.</div>
-      </div>
-    </a>
-
-    <nav class="main-nav">
-      <a class="active" href="#home">HOME</a>
-      <a href="#videos">VIDEOS</a>
-      <a href="#shorts">SHORTS</a>
-      <a href="#schedule">SCHEDULE</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
-
-    <div class="social-icons">
-      <a href="https://www.twitch.tv/Arnimane" target="_blank" rel="noreferrer" title="Twitch">▣</a>
-      <a href="https://www.youtube.com/@ArnimaneHD" target="_blank" rel="noreferrer" title="YouTube">▶</a>
-      <a href="https://www.tiktok.com/@arnimanehd" target="_blank" rel="noreferrer" title="TikTok">♪</a>
-      <a href="https://twitter.com/arnimane" target="_blank" rel="noreferrer" title="Twitter / X">𝕏</a>
-      <a href="https://www.instagram.com/arnimane" target="_blank" rel="noreferrer" title="Instagram">◎</a>
+  <a class="brand" href="/index.html">
+    <img src="/assets/logo.png" alt="Arnimane logo">
+    <div>
+      <div class="brand-name">ARNIMANE</div>
+      <div class="brand-tag">JOIN THE ADVENTURE. EMBRACE THE CHAOS.</div>
     </div>
-  </header>
+  </a>
 
+  <nav class="main-nav desktop-nav">
+    <a class="nav-home" href="/index.html">HOME</a>
+    <a class="nav-videos" href="/videos.html">VIDEOS</a>
+    <a class="nav-shorts" href="/shorts.html">SHORTS</a>
+    <a class="nav-friends" href="/friends.html">FRIENDS</a>
+    <a class="nav-schedule" href="/schedule.html">SCHEDULE</a>
+    <a class="nav-about" href="/about.html">ABOUT</a>
+  </nav>
+
+  <nav class="main-nav mobile-nav">
+    <a href="/index.html#home">HOME</a>
+    <a href="/index.html#videos">VIDEOS</a>
+    <a href="/index.html#shorts">SHORTS</a>
+    <a href="/index.html#friends">FRIENDS</a>
+    <a href="/index.html#schedule">SCHEDULE</a>
+  </nav>
+
+  <div class="social-icons">
+    <a href="https://www.twitch.tv/Arnimane" target="_blank" rel="noreferrer" title="Twitch">▣</a>
+    <a href="https://www.youtube.com/@ArnimaneHD" target="_blank" rel="noreferrer" title="YouTube">▶</a>
+    <a href="https://www.tiktok.com/@arnimanehd" target="_blank" rel="noreferrer" title="TikTok">♪</a>
+    <a href="https://twitter.com/arnimane" target="_blank" rel="noreferrer" title="Twitter / X">𝕏</a>
+    <a href="https://www.instagram.com/arnimane" target="_blank" rel="noreferrer" title="Instagram">◎</a>
+  </div>
+
+  <div class="mobile-follow-wrap">
+    <button id="followBtn" class="follow-btn">FOLLOW⌄</button>
+    <div id="followMenu" class="follow-menu">
+      <p>FOLLOW ME ON</p>
+      <a href="https://www.twitch.tv/Arnimane" target="_blank" rel="noreferrer"><span>▣</span> TWITCH <b>→</b></a>
+      <a href="https://www.youtube.com/@ArnimaneHD" target="_blank" rel="noreferrer"><span>▶</span> YOUTUBE <b>→</b></a>
+      <a href="https://www.tiktok.com/@arnimanehd" target="_blank" rel="noreferrer"><span>♪</span> TIKTOK <b>→</b></a>
+      <a href="https://twitter.com/arnimane" target="_blank" rel="noreferrer"><span>𝕏</span> TWITTER / X <b>→</b></a>
+      <a href="https://www.instagram.com/arnimane" target="_blank" rel="noreferrer"><span>◎</span> INSTAGRAM <b>→</b></a>
+    </div>
+  </div>
+</header>
   <main id="home" class="fade-in">
-    <section class="hero" id="hero">
+    <section class="hero hero-desktop">
       <div class="hero-light"></div>
 
       <div class="hero-copy">
         <div class="live-now" id="heroLiveLabel"><span></span> CHECKING STREAM</div>
         <h1 id="heroHeadline">JOIN THE<br><em>CHAOS</em></h1>
         <p id="heroSubtext">Games, laughs, Arnimaniacs, and unforgettable moments live on Twitch.</p>
-
         <div class="hero-buttons">
           <a class="btn purple" href="https://www.twitch.tv/Arnimane" target="_blank" rel="noreferrer">▣ WATCH LIVE ON TWITCH</a>
           <a class="btn blue" href="https://www.youtube.com/@ArnimaneHD" target="_blank" rel="noreferrer">▶ WATCH ON YOUTUBE</a>
         </div>
       </div>
 
-      <div class="hero-logo">
+      <div class="featured-stream hero-player">
+        <div class="live-badge" id="liveBadge">● CHECKING</div>
+        <div class="stream-frame">
+          <iframe id="twitchPlayer" title="Arnimane Twitch stream" allowfullscreen frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="stream-meta">
+          <img src="/assets/logo.png" alt="">
+          <div>
+            <strong>Arnimane <span>●</span></strong>
+            <p id="streamTitle">Streaming chaos live on Twitch! 🔥</p>
+            <small id="streamStatus">Twitch player loading…</small>
+          </div>
+          <div class="twitch-mark">▣</div>
+        </div>
+      </div>
+
+      <div class="hero-logo hero-logo-right">
         <img src="/assets/logo.png" alt="Arnimane">
       </div>
+    </section>
 
-      <div class="live-layout">
-        <div class="featured-stream">
-          <div class="live-badge" id="liveBadge">● CHECKING</div>
-          <div class="stream-frame">
-            <iframe id="twitchPlayer" title="Arnimane Twitch stream" allowfullscreen frameborder="0" scrolling="no"></iframe>
-          </div>
-          <div class="stream-meta">
-            <img src="/assets/logo.png" alt="">
-            <div>
-              <strong>Arnimane <span>●</span></strong>
-              <p id="streamTitle">Streaming chaos live on Twitch! 🔥</p>
-              <small id="streamStatus">Twitch player loading…</small>
-            </div>
-            <div class="twitch-mark">▣</div>
-          </div>
-        </div>
-
-        <aside class="chat-panel" id="chatPanel">
-          <h2>LIVE CHAT</h2>
-          <iframe id="twitchChat" title="Arnimane Twitch chat" frameborder="0"></iframe>
-        </aside>
-      </div>
+    <section class="chat-row">
+      <aside class="chat-panel" id="chatPanel">
+        <h2>LIVE CHAT</h2>
+        <iframe id="twitchChat" title="Arnimane Twitch chat" frameborder="0"></iframe>
+      </aside>
     </section>
 
     <section class="content-grid">
       <article class="panel large" id="videos">
         <div class="panel-head">
           <h2>LATEST YOUTUBE VIDEOS</h2>
-          <a href="https://www.youtube.com/@ArnimaneHD/videos" target="_blank" rel="noreferrer">VIEW ALL</a>
+          <div class="panel-actions">
+            <button class="arrow-btn" data-carousel="videosGrid" data-dir="-1">‹</button>
+            <button class="arrow-btn" data-carousel="videosGrid" data-dir="1">›</button>
+            <a href="/videos.html">VIEW ALL</a>
+          </div>
         </div>
-        <div id="videosGrid" class="video-row six">
+        <div id="videosGrid" class="video-row carousel-row">
           <p class="loading">Loading videos…</p>
         </div>
       </article>
@@ -98,9 +119,13 @@
       <article class="panel large" id="shorts">
         <div class="panel-head">
           <h2>YOUTUBE SHORTS</h2>
-          <a href="https://www.youtube.com/@ArnimaneHD/shorts" target="_blank" rel="noreferrer">VIEW ALL</a>
+          <div class="panel-actions">
+            <button class="arrow-btn" data-carousel="shortsGrid" data-dir="-1">‹</button>
+            <button class="arrow-btn" data-carousel="shortsGrid" data-dir="1">›</button>
+            <a href="/shorts.html">VIEW ALL</a>
+          </div>
         </div>
-        <div id="shortsGrid" class="shorts-row">
+        <div id="shortsGrid" class="shorts-row carousel-row">
           <p class="loading">Loading Shorts…</p>
         </div>
       </article>
@@ -110,22 +135,26 @@
       <article class="panel about" id="about">
         <h2>ABOUT ME</h2>
         <p>I’m Arnimane — a variety content creator and streamer! Expect high-energy gameplay, chaotic co-op moments, horror games, Pokémon adventures, and whatever else sounds fun.</p>
-        <a class="mini-btn" href="https://www.twitch.tv/Arnimane/about" target="_blank" rel="noreferrer">LEARN MORE</a>
+        <a class="mini-btn" href="/about.html">LEARN MORE</a>
         <div class="game-icon">🎮</div>
       </article>
 
-      <article class="panel crew">
+      <article class="panel crew" id="friends">
         <h2>FRIENDS</h2>
-        <div class="crew-list">
-          <a href="/friend.html?friend=jmmackle"><span>🧢</span><p>JMMackle</p></a>
-          <a href="/friend.html?friend=mortuarykittenx"><span>🔪</span><p>Mortuary<br>Kittenx</p></a>
-          <a href="/friend.html?friend=matt"><span>😎</span><p>Matt</p></a>
-          <a href="/friend.html?friend=wolfie"><span>🐺</span><p>Wolfie</p></a>
+        <div class="crew-list" id="homeFriends">
+          <a href="/friend.html?friend=jmmackle"><span class="friend-avatar-mini">🧢</span><p>JMMackle</p></a>
+          <a href="/friend.html?friend=mortuarykittenx"><span class="friend-avatar-mini">🔪</span><p>Mortuary<br>Kittenx</p></a>
+          <a href="/friend.html?friend=wolfie"><span class="friend-avatar-mini">🐺</span><p>Wolfie</p></a>
         </div>
+        <a class="mini-btn" href="/friends.html">VIEW FRIENDS PAGE</a>
       </article>
 
       <article class="panel schedule" id="schedule">
         <h2>STREAM SCHEDULE <span>▣</span></h2>
+        <div class="schedule-line">
+          <small>MONDAY</small>
+          <strong>OFF <b>REST DAY</b></strong>
+        </div>
         <div class="schedule-line">
           <small>TUESDAY - SUNDAY</small>
           <strong>8:00 PM <b>EST</b></strong>
@@ -148,7 +177,8 @@
       <div><span>◉</span><strong id="ytViews">—</strong><small>YOUTUBE VIEWS</small></div>
       <div><span>🎬</span><strong id="ytVideos">—</strong><small>YOUTUBE VIDEOS</small></div>
       <div><span>🔴</span><strong id="twitchLive">—</strong><small>TWITCH STATUS</small></div>
-      <div><span>💜</span><strong>ARNIMANIACS</strong><small>COMMUNITY</small></div>
+      <div><span>👥</span><strong id="twitchViewers">—</strong><small>LIVE VIEWERS</small></div>
+      <div><span>🎮</span><strong id="twitchGame">—</strong><small>TWITCH GAME</small></div>
     </section>
 
     <footer class="footer">
@@ -164,7 +194,6 @@
       </div>
     </footer>
   </main>
-
   <script src="/script.js"></script>
 </body>
 </html>
