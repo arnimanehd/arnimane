@@ -68,3 +68,12 @@ The live Twitch chat overlay now uses:
 - Translucent black/frosted overlay
 - Strong purple neon border and glow
 - Twitch chat floating above the logo background
+
+
+## Latest update
+
+- Centered the About and Friends buttons on desktop.
+- Removed Twitch live/viewer/game stats from the bottom stats bar.
+- Bottom stats now focus on YouTube: subscribers, views, and video count.
+- Replaced text social symbols with SVG logo-style icons for Twitch, YouTube, TikTok, Instagram, and X.
+- Icons are recolored to match the purple neon branding.

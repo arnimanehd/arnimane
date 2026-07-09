@@ -91,8 +91,6 @@ async function loadTwitchStatus(){
       document.getElementById("heroSubtext").textContent="The chaos is live. Jump into chat with the Arnimaniacs.";
       document.getElementById("streamStatus").textContent=`Playing ${d.game||"games"}${d.viewers?` with ${d.viewers.toLocaleString()} viewers`:""}`;
       document.getElementById("twitchLive").textContent="LIVE";
-      document.getElementById("twitchViewers").textContent=d.viewers?compactNumber(d.viewers):"—";
-      document.getElementById("twitchGame").textContent=d.game||"—";
     }else{
       hero.classList.remove("is-live");
       badge.textContent="● OFFLINE";
@@ -102,9 +100,6 @@ async function loadTwitchStatus(){
       document.getElementById("heroHeadline").innerHTML="JOIN THE<br><em>CHAOS</em>";
       document.getElementById("heroSubtext").textContent="Catch the latest uploads, Shorts, and stream highlights.";
       document.getElementById("streamStatus").textContent="Offline right now — check out the latest uploads.";
-      document.getElementById("twitchLive").textContent="OFFLINE";
-      document.getElementById("twitchViewers").textContent="0";
-      document.getElementById("twitchGame").textContent="—";
     }
   }catch{
     document.getElementById("streamStatus").textContent="Live status ready to connect.";
