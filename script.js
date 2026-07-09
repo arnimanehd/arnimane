@@ -18,20 +18,25 @@ function durationLabel(seconds){const m=Math.floor(seconds/60),s=Math.floor(seco
 function compactNumber(n){if(n===undefined||n===null||n==="")return"—";return Intl.NumberFormat(undefined,{notation:"compact",maximumFractionDigits:1}).format(Number(n))}
 function videoCard(v,isShort=false){return `<article class="${isShort?"short-card":"video-card"}"><a href="${v.url}" target="_blank" rel="noreferrer"><div class="thumb"><img src="${v.thumbnail}" alt=""><span class="duration">${isShort?"":durationLabel(v.durationSeconds)}</span></div><h3>${esc(v.title)}</h3><small>${formatDate(v.publishedAt)}</small></a></article>`}
 const pagerState = {
-  videosGrid: { items: [], page: 0, perPage: 6, isShort: false },
-  shortsGrid: { items: [], page: 0, perPage: 4, isShort: true }
+  videosGrid: { items: [], page: 0, desktopPerPage: 6, mobilePerPage: 1, isShort: false },
+  shortsGrid: { items: [], page: 0, desktopPerPage: 4, mobilePerPage: 1, isShort: true }
 };
+
+function currentPerPage(state) {
+  return window.matchMedia("(max-width: 620px)").matches ? state.mobilePerPage : state.desktopPerPage;
+}
 
 function renderPager(id) {
   const state = pagerState[id];
   const el = document.getElementById(id);
   if (!state || !el) return;
 
-  const totalPages = Math.max(1, Math.ceil(state.items.length / state.perPage));
+  const perPage = currentPerPage(state);
+  const totalPages = Math.max(1, Math.ceil(state.items.length / perPage));
   state.page = ((state.page % totalPages) + totalPages) % totalPages;
 
-  const start = state.page * state.perPage;
-  const pageItems = state.items.slice(start, start + state.perPage);
+  const start = state.page * perPage;
+  const pageItems = state.items.slice(start, start + perPage);
 
   el.innerHTML = pageItems.map(v => videoCard(v, state.isShort)).join("") ||
     `<p class="loading">No ${state.isShort ? "Shorts" : "videos"} found.</p>`;
@@ -119,3 +124,9 @@ async function loadFriendAvatars(){
   }catch{}
 }
 loadUploads();loadTwitchStatus();loadFriendAvatars();
+
+
+window.addEventListener("resize", () => {
+  renderPager("videosGrid");
+  renderPager("shortsGrid");
+});
