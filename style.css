@@ -383,3 +383,131 @@ h1{font-size:50px;line-height:1.02;margin:0 0 18px;text-shadow:0 0 16px rgba(255
     max-height: 520px;
   }
 }
+
+
+/* --- Live chat over faded logo --- */
+.chat-logo-slot {
+  position: relative;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+.hero-logo-bg {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: min(285px, 88%);
+  opacity: 1;
+  transition: opacity .35s ease, filter .35s ease, transform .35s ease;
+  z-index: 1;
+}
+
+.chat-logo-slot .logo-chat-panel {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 420px;
+  display: none;
+  border: 1px solid rgba(255,39,232,.55);
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(7,2,18,.80), rgba(7,2,18,.88));
+  box-shadow: 0 0 22px rgba(255,39,232,.25);
+}
+
+.chat-logo-slot .logo-chat-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/logo.png") center center / 72% auto no-repeat;
+  opacity: .16;
+  filter: drop-shadow(0 0 18px rgba(255,39,232,.65));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.chat-logo-slot .logo-chat-panel.show {
+  display: block;
+  animation: chatIn .35s ease both;
+}
+
+.chat-logo-slot .logo-chat-panel h2,
+.chat-logo-slot .logo-chat-panel iframe {
+  position: relative;
+  z-index: 1;
+}
+
+.chat-logo-slot .logo-chat-panel h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  margin: 0;
+  padding: 14px;
+  background: rgba(13,6,32,.92);
+}
+
+.chat-logo-slot .logo-chat-panel iframe {
+  width: 100%;
+  height: calc(100% - 47px);
+  background: rgba(0,0,0,.45);
+}
+
+.chat-live-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff1f36;
+  box-shadow: 0 0 14px rgba(255,31,54,.95);
+}
+
+.hero.is-live .chat-logo-slot .hero-logo-bg {
+  opacity: .18;
+  filter: blur(.5px) drop-shadow(0 0 22px rgba(255,39,232,.55));
+  transform: translate(-50%, -50%) scale(.96);
+}
+
+@keyframes chatIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Disable the old under-player chat row layout */
+.chat-row {
+  display: none !important;
+}
+
+@media (max-width: 1250px) {
+  .chat-logo-slot {
+    min-height: 430px;
+    width: min(680px, 100%);
+    margin: 0 auto;
+  }
+
+  .chat-logo-slot .logo-chat-panel {
+    height: 430px;
+  }
+}
+
+@media (max-width: 620px) {
+  .chat-logo-slot {
+    min-height: 360px;
+  }
+
+  .chat-logo-slot .logo-chat-panel {
+    height: 360px;
+  }
+
+  .chat-logo-slot .logo-chat-panel::before {
+    background-size: 82% auto;
+    opacity: .13;
+  }
+}

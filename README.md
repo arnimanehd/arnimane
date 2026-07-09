@@ -53,3 +53,8 @@ Added:
 Note about Twitch stats:
 Twitch live viewers, current game, stream title, and avatars work with app credentials.
 Twitch follower count requires user OAuth permissions and is not included by default.
+
+
+## Live chat overlay update
+
+When Twitch live status says you're live, the Twitch chat now appears over the logo area. The logo remains visible as a faded background inside the chat panel instead of disappearing completely.
