@@ -18,8 +18,8 @@ function durationLabel(seconds){const m=Math.floor(seconds/60),s=Math.floor(seco
 function compactNumber(n){if(n===undefined||n===null||n==="")return"—";return Intl.NumberFormat(undefined,{notation:"compact",maximumFractionDigits:1}).format(Number(n))}
 function videoCard(v,isShort=false){return `<article class="${isShort?"short-card":"video-card"}"><a href="${v.url}" target="_blank" rel="noreferrer"><div class="thumb"><img src="${v.thumbnail}" alt=""><span class="duration">${isShort?"":durationLabel(v.durationSeconds)}</span></div><h3>${esc(v.title)}</h3><small>${formatDate(v.publishedAt)}</small></a></article>`}
 const pagerState = {
-  videosGrid: { items: [], page: 0, perPage: 9, isShort: false },
-  shortsGrid: { items: [], page: 0, perPage: 8, isShort: true }
+  videosGrid: { items: [], page: 0, perPage: 6, isShort: false },
+  shortsGrid: { items: [], page: 0, perPage: 4, isShort: true }
 };
 
 function renderPager(id) {
