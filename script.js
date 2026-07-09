@@ -17,13 +17,35 @@ function formatDate(d){return new Date(d).toLocaleDateString(undefined,{month:"s
 function durationLabel(seconds){const m=Math.floor(seconds/60),s=Math.floor(seconds%60);return `${m}:${String(s).padStart(2,"0")}`}
 function compactNumber(n){if(n===undefined||n===null||n==="")return"—";return Intl.NumberFormat(undefined,{notation:"compact",maximumFractionDigits:1}).format(Number(n))}
 function videoCard(v,isShort=false){return `<article class="${isShort?"short-card":"video-card"}"><a href="${v.url}" target="_blank" rel="noreferrer"><div class="thumb"><img src="${v.thumbnail}" alt=""><span class="duration">${isShort?"":durationLabel(v.durationSeconds)}</span></div><h3>${esc(v.title)}</h3><small>${formatDate(v.publishedAt)}</small></a></article>`}
+const pagerState = {
+  videosGrid: { items: [], page: 0, perPage: 9, isShort: false },
+  shortsGrid: { items: [], page: 0, perPage: 8, isShort: true }
+};
+
+function renderPager(id) {
+  const state = pagerState[id];
+  const el = document.getElementById(id);
+  if (!state || !el) return;
+
+  const totalPages = Math.max(1, Math.ceil(state.items.length / state.perPage));
+  state.page = ((state.page % totalPages) + totalPages) % totalPages;
+
+  const start = state.page * state.perPage;
+  const pageItems = state.items.slice(start, start + state.perPage);
+
+  el.innerHTML = pageItems.map(v => videoCard(v, state.isShort)).join("") ||
+    `<p class="loading">No ${state.isShort ? "Shorts" : "videos"} found.</p>`;
+
+  el.dataset.page = `${state.page + 1} / ${totalPages}`;
+}
+
 function setupCarouselButtons(){
   document.querySelectorAll(".arrow-btn").forEach(btn=>{
     btn.addEventListener("click",()=>{
-      const el=document.getElementById(btn.dataset.carousel);
-      if(!el)return;
-      const amount=Math.max(260, Math.floor(el.clientWidth*.82))*Number(btn.dataset.dir||1);
-      el.scrollBy({left:amount,behavior:"smooth"});
+      const id = btn.dataset.carousel;
+      if (!pagerState[id]) return;
+      pagerState[id].page += Number(btn.dataset.dir || 1);
+      renderPager(id);
     });
   });
 }
@@ -32,8 +54,12 @@ async function loadUploads(){
     const r=await fetch("/api/youtube"),d=await r.json();
     if(!r.ok)throw new Error(d.error||"Could not load uploads");
     const videos=d.videos||[],shorts=d.shorts||[],stats=d.stats||{};
-    document.getElementById("videosGrid").innerHTML=videos.slice(0,12).map(v=>videoCard(v,false)).join("")||"<p class='loading'>No videos found.</p>";
-    document.getElementById("shortsGrid").innerHTML=shorts.slice(0,18).map(v=>videoCard(v,true)).join("")||"<p class='loading'>No Shorts found.</p>";
+    pagerState.videosGrid.items = videos;
+    pagerState.videosGrid.page = 0;
+    pagerState.shortsGrid.items = shorts;
+    pagerState.shortsGrid.page = 0;
+    renderPager("videosGrid");
+    renderPager("shortsGrid");
     document.getElementById("ytSubs").textContent=stats.hiddenSubscriberCount?"Hidden":compactNumber(stats.subscriberCount);
     document.getElementById("ytViews").textContent=compactNumber(stats.viewCount);
     document.getElementById("ytVideos").textContent=compactNumber(stats.videoCount);

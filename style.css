@@ -121,3 +121,99 @@ h1{font-size:50px;line-height:1.02;margin:0 0 18px;text-shadow:0 0 16px rgba(255
   .hero-player{width:100%}
   .chat-row{padding-inline:12px}
 }
+
+
+/* --- Homepage paged video/shorts sections --- */
+.panel.large {
+  position: relative;
+}
+
+.panel-actions {
+  position: static;
+}
+
+.panel-actions > a {
+  margin-left: 6px;
+}
+
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 46px;
+  height: 64px;
+  border-radius: 12px;
+  background: rgba(9, 3, 22, .88);
+  backdrop-filter: none;
+}
+
+.arrow-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.arrow-btn[data-dir="-1"] {
+  left: 10px;
+}
+
+.arrow-btn[data-dir="1"] {
+  right: 10px;
+}
+
+.paged-grid {
+  overflow: visible !important;
+  scroll-snap-type: none !important;
+  scrollbar-width: none;
+  padding: 0 54px 4px;
+}
+
+.paged-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.video-row.paged-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.shorts-row.paged-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.paged-grid .video-card,
+.paged-grid .short-card {
+  min-width: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .video-row.paged-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shorts-row.paged-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .paged-grid {
+    padding-inline: 46px;
+  }
+}
+
+@media (max-width: 620px) {
+  .video-row.paged-grid,
+  .shorts-row.paged-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .arrow-btn {
+    width: 40px;
+    height: 56px;
+  }
+
+  .paged-grid {
+    padding-inline: 42px;
+  }
+}
