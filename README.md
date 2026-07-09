@@ -77,3 +77,30 @@ The live Twitch chat overlay now uses:
 - Bottom stats now focus on YouTube: subscribers, views, and video count.
 - Replaced text social symbols with SVG logo-style icons for Twitch, YouTube, TikTok, Instagram, and X.
 - Icons are recolored to match the purple neon branding.
+
+
+## Friend socials update
+
+Updated friend pages with provided social links:
+
+JMMackle:
+- Twitch: JMMackle
+- TikTok: JMMackle
+- YouTube: JMMackle
+- Instagram: JMMackle
+- Discord invite
+
+MortuaryKittenx:
+- Twitch: MortuaryKittenx
+- TikTok: mortuarykittenx
+- YouTube channel URL
+- Instagram: mortuarykittenx.ttv
+- X: mortuarykittenx
+- Discord invite
+
+Wolfie:
+- Twitch: mr_wildwolfie
+- TikTok URL
+- YouTube channel URL
+- X URL
+- Discord invite
