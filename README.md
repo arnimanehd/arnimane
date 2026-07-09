@@ -58,3 +58,13 @@ Twitch follower count requires user OAuth permissions and is not included by def
 ## Live chat overlay update
 
 When Twitch live status says you're live, the Twitch chat now appears over the logo area. The logo remains visible as a faded background inside the chat panel instead of disappearing completely.
+
+
+## Frosted chat overlay update
+
+The live Twitch chat overlay now uses:
+- Logo visible at roughly 25–30% opacity
+- Subtle logo blur
+- Translucent black/frosted overlay
+- Strong purple neon border and glow
+- Twitch chat floating above the logo background

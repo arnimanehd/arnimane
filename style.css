@@ -511,3 +511,94 @@ h1{font-size:50px;line-height:1.02;margin:0 0 18px;text-shadow:0 0 16px rgba(255
     opacity: .13;
   }
 }
+
+
+/* --- Frosted neon Twitch chat overlay over logo --- */
+.chat-logo-slot {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-logo-bg {
+  opacity: 1;
+  transition: opacity .35s ease, filter .35s ease, transform .35s ease;
+}
+
+.hero.is-live .chat-logo-slot .hero-logo-bg {
+  opacity: .28;
+  filter: blur(1.5px) drop-shadow(0 0 24px rgba(255,39,232,.7));
+  transform: translate(-50%, -50%) scale(.98);
+}
+
+.chat-logo-slot .logo-chat-panel {
+  background:
+    linear-gradient(rgba(0,0,0,.42), rgba(0,0,0,.62)),
+    rgba(8, 2, 18, .56);
+  border: 1px solid rgba(255,39,232,.82);
+  box-shadow:
+    0 0 18px rgba(255,39,232,.42),
+    0 0 44px rgba(130,45,255,.18),
+    inset 0 0 28px rgba(255,39,232,.08);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.chat-logo-slot .logo-chat-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/logo.png") center center / 76% auto no-repeat;
+  opacity: .28;
+  filter: blur(1.2px) drop-shadow(0 0 18px rgba(255,39,232,.8));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.chat-logo-slot .logo-chat-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,39,232,.12), transparent 42%),
+    linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.34));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.chat-logo-slot .logo-chat-panel h2 {
+  background:
+    linear-gradient(90deg, rgba(20,4,38,.95), rgba(50,5,60,.78));
+  border-bottom: 1px solid rgba(255,39,232,.35);
+  box-shadow: 0 0 16px rgba(255,39,232,.16);
+}
+
+.chat-logo-slot .logo-chat-panel iframe {
+  background: rgba(0,0,0,.18);
+  mix-blend-mode: normal;
+}
+
+.chat-logo-slot .logo-chat-panel h2,
+.chat-logo-slot .logo-chat-panel iframe {
+  position: relative;
+  z-index: 2;
+}
+
+@supports not ((backdrop-filter: blur(3px)) or (-webkit-backdrop-filter: blur(3px))) {
+  .chat-logo-slot .logo-chat-panel {
+    background:
+      linear-gradient(rgba(0,0,0,.62), rgba(0,0,0,.78)),
+      rgba(8, 2, 18, .9);
+  }
+}
+
+@media (max-width: 620px) {
+  .hero.is-live .chat-logo-slot .hero-logo-bg {
+    opacity: .24;
+    filter: blur(1px) drop-shadow(0 0 18px rgba(255,39,232,.65));
+  }
+
+  .chat-logo-slot .logo-chat-panel::before {
+    opacity: .24;
+    background-size: 88% auto;
+  }
+}
