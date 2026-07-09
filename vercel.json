@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/youtube",
+      "destination": "/api/youtube.js"
+    },
+    {
+      "source": "/api/twitch-status",
+      "destination": "/api/twitch-status.js"
+    }
+  ]
+}
