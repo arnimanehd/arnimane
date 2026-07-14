@@ -134,3 +134,8 @@ See `sanity-studio/README.md` for setup.
 - Mobile header hides while scrolling down and returns while scrolling up.
 - Selecting a mobile anchor closes and hides the header.
 - About controller is aligned beside the Learn More button.
+
+
+## Announcement loading fix
+
+The homepage announcement loader now uses uniquely named functions and variables so it does not conflict with the main website JavaScript. The announcement script reference also uses a new cache version.
