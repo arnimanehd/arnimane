@@ -1,6 +1,9 @@
 const announcementState = {
   all: [],
-  category: "all"
+  category: "all",
+  homepageItems: [],
+  homepageIndex: 0,
+  homepageTimer: null
 };
 
 function announcementEscape(value = "") {
@@ -105,6 +108,125 @@ async function fetchAnnouncements() {
   return data.announcements || [];
 }
 
+function renderHomepageAnnouncement() {
+  const featuredContainer = document.getElementById("featuredAnnouncement");
+  const counter = document.getElementById("announcementCounter");
+  const dots = document.getElementById("announcementDots");
+  const previousButton = document.getElementById("announcementPrev");
+  const nextButton = document.getElementById("announcementNext");
+
+  if (!featuredContainer) return;
+
+  const items = announcementState.homepageItems;
+  const total = items.length;
+
+  if (!total) return;
+
+  announcementState.homepageIndex =
+    ((announcementState.homepageIndex % total) + total) % total;
+
+  const currentItem = items[announcementState.homepageIndex];
+
+  featuredContainer.classList.remove("announcement-changing");
+  void featuredContainer.offsetWidth;
+  featuredContainer.classList.add("announcement-changing");
+  featuredContainer.innerHTML = announcementCard(currentItem, true);
+
+  if (counter) {
+    counter.textContent = `${announcementState.homepageIndex + 1} / ${total}`;
+  }
+
+  if (dots) {
+    dots.innerHTML = items.map((item, index) => `
+      <button
+        class="announcement-dot ${index === announcementState.homepageIndex ? "active" : ""}"
+        type="button"
+        aria-label="Show announcement ${index + 1}"
+        aria-current="${index === announcementState.homepageIndex ? "true" : "false"}"
+        data-announcement-index="${index}"
+      ></button>
+    `).join("");
+
+    dots.querySelectorAll(".announcement-dot").forEach(button => {
+      button.addEventListener("click", () => {
+        announcementState.homepageIndex =
+          Number(button.dataset.announcementIndex || 0);
+        renderHomepageAnnouncement();
+        restartHomepageAnnouncementTimer();
+      });
+    });
+  }
+
+  const disableControls = total <= 1;
+
+  if (previousButton) {
+    previousButton.disabled = disableControls;
+    previousButton.hidden = disableControls;
+  }
+
+  if (nextButton) {
+    nextButton.disabled = disableControls;
+    nextButton.hidden = disableControls;
+  }
+}
+
+function changeHomepageAnnouncement(direction) {
+  if (!announcementState.homepageItems.length) return;
+
+  announcementState.homepageIndex += direction;
+  renderHomepageAnnouncement();
+  restartHomepageAnnouncementTimer();
+}
+
+function restartHomepageAnnouncementTimer() {
+  // Auto-advance disabled by request.
+  window.clearInterval(announcementState.homepageTimer);
+}
+
+function setupHomepageAnnouncementControls() {
+  const previousButton = document.getElementById("announcementPrev");
+  const nextButton = document.getElementById("announcementNext");
+  const carousel = document.querySelector(".homepage-announcement-carousel");
+
+  if (previousButton) {
+    previousButton.addEventListener("click", () => {
+      changeHomepageAnnouncement(-1);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      changeHomepageAnnouncement(1);
+    });
+  }
+
+  if (carousel) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener("mouseenter", () => {
+      window.clearInterval(announcementState.homepageTimer);
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+      restartHomepageAnnouncementTimer();
+    });
+
+    carousel.addEventListener("touchstart", event => {
+      touchStartX = event.changedTouches[0]?.screenX || 0;
+    }, {passive: true});
+
+    carousel.addEventListener("touchend", event => {
+      touchEndX = event.changedTouches[0]?.screenX || 0;
+      const distance = touchEndX - touchStartX;
+
+      if (Math.abs(distance) < 45) return;
+
+      changeHomepageAnnouncement(distance > 0 ? -1 : 1);
+    }, {passive: true});
+  }
+}
+
 async function loadHomepageAnnouncements() {
   const featuredContainer = document.getElementById("featuredAnnouncement");
   const announcementStrip = document.getElementById("announcementStrip");
@@ -127,17 +249,21 @@ async function loadHomepageAnnouncements() {
       return;
     }
 
-    const featuredAnnouncement =
+    const featuredItem =
       announcements.find(item => item.featured) || announcements[0];
 
-    featuredContainer.innerHTML =
-      announcementCard(featuredAnnouncement, true);
+    announcementState.homepageItems = [
+      featuredItem,
+      ...announcements.filter(item => item._id !== featuredItem._id)
+    ];
 
-    announcementStrip.innerHTML = announcements
-      .filter(item => item._id !== featuredAnnouncement._id)
-      .slice(0, 3)
-      .map(item => announcementCard(item))
-      .join("");
+    announcementState.homepageIndex = 0;
+
+    setupHomepageAnnouncementControls();
+    renderHomepageAnnouncement();
+    restartHomepageAnnouncementTimer();
+
+    announcementStrip.innerHTML = "";
   } catch (error) {
     console.error("Homepage announcement error:", error);
 

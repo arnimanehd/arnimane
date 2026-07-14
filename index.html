@@ -89,11 +89,39 @@
 
 <section class="news-home panel" id="news">
   <div class="panel-head">
-    <div><p class="news-kicker">LATEST UPDATE</p><h2>NEWS & ANNOUNCEMENTS</h2></div>
-    <a href="/news.html">VIEW ALL</a>
+    <div>
+      <p class="news-kicker">LATEST UPDATE</p>
+      <h2>NEWS & ANNOUNCEMENTS</h2>
+    </div>
+
+    <div class="news-home-actions">
+      <span id="announcementCounter" class="announcement-counter" aria-live="polite">—</span>
+      <a href="/news.html">VIEW ALL</a>
+    </div>
   </div>
-  <div id="featuredAnnouncement" class="featured-announcement"><p class="loading">Loading the latest announcement…</p></div>
-  <div id="announcementStrip" class="announcement-strip"></div>
+
+  <div class="homepage-announcement-carousel">
+    <button
+      id="announcementPrev"
+      class="announcement-carousel-arrow announcement-carousel-prev"
+      type="button"
+      aria-label="Previous announcement"
+    >‹</button>
+
+    <div id="featuredAnnouncement" class="featured-announcement">
+      <p class="loading">Loading the latest announcement…</p>
+    </div>
+
+    <button
+      id="announcementNext"
+      class="announcement-carousel-arrow announcement-carousel-next"
+      type="button"
+      aria-label="Next announcement"
+    >›</button>
+  </div>
+
+  <div id="announcementDots" class="announcement-dots" aria-label="Announcement pages"></div>
+  <div id="announcementStrip" class="announcement-strip" hidden></div>
 </section>
 <section class="content-grid">
       <article class="panel large" id="videos">
@@ -185,7 +213,7 @@
       </div>
     </footer>
   </main>
-  <script src="/script.js"></script><script src="/announcements.js?v=5"></script>
+  <script src="/script.js"></script><script src="/announcements.js?v=7"></script>
   <script src="/mobile-nav.js"></script>
 </body>
 </html>
