@@ -6,7 +6,7 @@ import {schemaTypes} from "./schemaTypes"
 export default defineConfig({
   name: "default",
   title: "Arnimane News Studio",
-  projectId: "0en3q3ds",
+  projectId: "PASTE_YOUR_SANITY_PROJECT_ID",
   dataset: "production",
   plugins: [structureTool(), visionTool()],
   schema: {types: schemaTypes},

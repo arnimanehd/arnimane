@@ -123,3 +123,14 @@ SANITY_DATASET=production
 ```
 
 See `sanity-studio/README.md` for setup.
+
+
+## Layout refinement update
+
+- Homepage announcement is now constrained and centered instead of spanning ultra-wide screens.
+- Desktop News page uses a clean full-width vertical announcement feed.
+- Announcement cards without images no longer reserve an empty image column.
+- Mobile navigation is now a compact menu rather than a horizontally scrolling link strip.
+- Mobile header hides while scrolling down and returns while scrolling up.
+- Selecting a mobile anchor closes and hides the header.
+- About controller is aligned beside the Learn More button.
