@@ -1443,3 +1443,9 @@ h1{font-size:50px;line-height:1.02;margin:0 0 18px;text-shadow:0 0 16px rgba(255
     filter: none;
   }
 }
+
+
+/* Preserve paragraphs and line breaks entered in Sanity announcements */
+.announcement-card .announcement-content > p:not(.announcement-author) {
+  white-space: pre-line;
+}
