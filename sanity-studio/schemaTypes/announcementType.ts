@@ -10,11 +10,12 @@ export const announcementType = defineType({
     defineField({
       name:"category",title:"Category",type:"string",initialValue:"stream",
       options:{layout:"radio",list:[
+	{title:"Announcements",value:"announcement"},
         {title:"Stream Update",value:"stream"},
-        {title:"New Video",value:"video"},
+        {title:"Personal",value:"personal"},
         {title:"Schedule",value:"schedule"},
         {title:"Community",value:"community"},
-        {title:"General",value:"announcement"},
+        
       ]},
       validation:r=>r.required(),
     }),
