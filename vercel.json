@@ -12,6 +12,10 @@
     {
       "source": "/api/friends",
       "destination": "/api/friends.js"
+    },
+    {
+      "source": "/api/announcements",
+      "destination": "/api/announcements.js"
     }
   ]
 }

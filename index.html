@@ -24,7 +24,7 @@
 
   <nav class="main-nav desktop-nav">
     <a class="nav-home" href="/index.html">HOME</a>
-    <a class="nav-videos" href="/videos.html">VIDEOS</a>
+    <a class="nav-news" href="/news.html">NEWS</a><a class="nav-videos" href="/videos.html">VIDEOS</a>
     <a class="nav-shorts" href="/shorts.html">SHORTS</a>
     <a class="nav-friends" href="/friends.html">FRIENDS</a>
     <a class="nav-schedule" href="/schedule.html">SCHEDULE</a>
@@ -33,7 +33,7 @@
 
   <nav class="main-nav mobile-nav">
     <a href="/index.html#home">HOME</a>
-    <a href="/index.html#videos">VIDEOS</a>
+    <a href="/index.html#news">NEWS</a><a href="/index.html#videos">VIDEOS</a>
     <a href="/index.html#shorts">SHORTS</a>
     <a href="/index.html#friends">FRIENDS</a>
     <a href="/index.html#schedule">SCHEDULE</a>
@@ -86,6 +86,15 @@
         </aside>
       </div>
     </section>
+
+<section class="news-home panel" id="news">
+  <div class="panel-head">
+    <div><p class="news-kicker">LATEST UPDATE</p><h2>NEWS & ANNOUNCEMENTS</h2></div>
+    <a href="/news.html">VIEW ALL</a>
+  </div>
+  <div id="featuredAnnouncement" class="featured-announcement"><p class="loading">Loading the latest announcement…</p></div>
+  <div id="announcementStrip" class="announcement-strip"></div>
+</section>
 <section class="content-grid">
       <article class="panel large" id="videos">
         <div class="panel-head">
@@ -176,6 +185,6 @@
       </div>
     </footer>
   </main>
-  <script src="/script.js"></script>
+  <script src="/script.js"></script><script src="/announcements.js"></script>
 </body>
 </html>

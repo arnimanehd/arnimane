@@ -104,3 +104,22 @@ Wolfie:
 - YouTube channel URL
 - X URL
 - Discord invite
+
+
+## Sanity News & Announcements
+
+- Homepage featured announcement
+- Recent announcements
+- Dedicated `/news.html` archive
+- Filters for stream, video, schedule, and community posts
+- Optional images and buttons
+- Sanity editing dashboard in `sanity-studio/`
+
+Vercel variables:
+
+```text
+SANITY_PROJECT_ID=your_project_id
+SANITY_DATASET=production
+```
+
+See `sanity-studio/README.md` for setup.
