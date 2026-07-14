@@ -10,8 +10,8 @@ module.exports=async function handler(req,res){
     if(!uploadsPlaylist)throw new Error("Could not find channel uploads playlist.");
     const playlist=await yt("playlistItems",{part:"snippet",maxResults:"40",playlistId:uploadsPlaylist,key:apiKey});
     const ids=playlist.items.map(i=>i.snippet?.resourceId?.videoId).filter(Boolean);
-    const details=await yt("videos",{part:"snippet,contentDetails",id:ids.join(","),key:apiKey});
-    const uploads=details.items.map(v=>{const durationSeconds=parseDurationToSeconds(v.contentDetails.duration);const thumb=v.snippet.thumbnails.maxres||v.snippet.thumbnails.high||v.snippet.thumbnails.medium||v.snippet.thumbnails.default;const isShort=durationSeconds<=60;return{id:v.id,title:v.snippet.title,publishedAt:v.snippet.publishedAt,thumbnail:thumb.url,durationSeconds,url:isShort?`https://www.youtube.com/shorts/${v.id}`:`https://www.youtube.com/watch?v=${v.id}`}});
+    const details=await yt("videos",{part:"snippet,contentDetails,statistics",id:ids.join(","),key:apiKey});
+    const uploads=details.items.map(v=>{const durationSeconds=parseDurationToSeconds(v.contentDetails.duration);const thumb=v.snippet.thumbnails.maxres||v.snippet.thumbnails.high||v.snippet.thumbnails.medium||v.snippet.thumbnails.default;const isShort=durationSeconds<=60;return{id:v.id,title:v.snippet.title,publishedAt:v.snippet.publishedAt,thumbnail:thumb.url,durationSeconds,viewCount:Number(v.statistics?.viewCount||0),url:isShort?`https://www.youtube.com/shorts/${v.id}`:`https://www.youtube.com/watch?v=${v.id}`}});
     res.statusCode=200;
     res.setHeader("Content-Type","application/json");
     res.setHeader("Cache-Control","s-maxage=900, stale-while-revalidate=3600");

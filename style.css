@@ -1291,20 +1291,155 @@ h1{font-size:50px;line-height:1.02;margin:0 0 18px;text-shadow:0 0 16px rgba(255
 }
 
 
-/* Align YouTube CTA row beneath hero text and to the right */
-.page-hero .hero-copy{
-  display:flex;
-  flex-direction:column;
+/* =========================================================
+   Premium Videos and Shorts pages
+   ========================================================= */
+
+.page-hero {
+  position: relative;
 }
-.page-hero .youtube-cta-row{
-  align-self:flex-end;
-  justify-content:flex-end;
-  margin-top:18px;
+
+.page-hero-compact-actions {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-@media (max-width:900px){
-  .page-hero .youtube-cta-row{
-    align-self:center;
-    justify-content:center;
-    width:100%;
+
+.compact-cta {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 15px;
+  color: white;
+  text-decoration: none;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 1000;
+  letter-spacing: .06em;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.compact-cta:hover {
+  transform: translateY(-2px);
+}
+
+.compact-cta-primary {
+  border: 1px solid var(--pink);
+  background: linear-gradient(90deg, #6817b8, #d322ee);
+  box-shadow: 0 0 14px rgba(255,39,232,.28);
+}
+
+.compact-cta-secondary {
+  border: 1px solid rgba(255,39,232,.62);
+  background: rgba(10,3,24,.72);
+}
+
+.compact-cta .brand-icon {
+  width: 18px;
+  height: 18px;
+  color: currentColor;
+  filter: none;
+}
+
+.premium-content-card {
+  transition: transform .24s ease, filter .24s ease;
+}
+
+.premium-content-card:hover {
+  transform: translateY(-7px) scale(1.018);
+  filter: drop-shadow(0 0 18px rgba(255,39,232,.34));
+}
+
+.premium-content-card .thumb {
+  border-color: rgba(255,39,232,.44);
+  transition: border-color .24s ease, box-shadow .24s ease;
+}
+
+.premium-content-card:hover .thumb {
+  border-color: rgba(255,39,232,.9);
+  box-shadow:
+    0 0 22px rgba(255,39,232,.26),
+    inset 0 0 18px rgba(0,170,255,.05);
+}
+
+.watch-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  color: white;
+  background: linear-gradient(rgba(4,0,12,.20), rgba(4,0,12,.78));
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity .24s ease, transform .24s ease;
+  text-align: center;
+}
+
+.premium-content-card:hover .watch-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.watch-overlay-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  margin: auto;
+  padding-left: 4px;
+  border: 1px solid rgba(255,255,255,.68);
+  border-radius: 50%;
+  background: rgba(122,18,157,.65);
+  box-shadow: 0 0 18px rgba(255,39,232,.5);
+  font-size: 22px;
+}
+
+.watch-overlay strong {
+  font-size: 12px;
+  letter-spacing: .14em;
+}
+
+.content-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+}
+
+.content-card-meta span {
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .page-hero {
+    padding-top: 78px;
+  }
+
+  .page-hero-compact-actions {
+    top: 18px;
+    right: 18px;
+  }
+
+  .compact-cta {
+    min-height: 36px;
+    padding-inline: 12px;
+  }
+}
+
+@media (hover: none) {
+  .watch-overlay {
+    opacity: 0;
+  }
+
+  .premium-content-card:hover {
+    transform: none;
+    filter: none;
   }
 }
