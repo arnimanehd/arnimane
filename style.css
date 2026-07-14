@@ -1289,3 +1289,47 @@ h1{font-size:50px;line-height:1.02;margin:0 0 18px;text-shadow:0 0 16px rgba(255
     animation: none;
   }
 }
+
+
+/* --- YouTube page call-to-action buttons --- */
+.youtube-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.youtube-cta-row .btn {
+  min-width: 190px;
+  padding: 0 20px;
+}
+
+.youtube-subscribe-btn {
+  background: linear-gradient(90deg, #7d0a18, #d51f32);
+  border: 1px solid #ff4c5f;
+  box-shadow: 0 0 18px rgba(255, 46, 69, .35);
+}
+
+.youtube-notify-btn {
+  background: rgba(12, 7, 28, .88);
+  border: 1px solid rgba(255, 39, 232, .58);
+  box-shadow: 0 0 16px rgba(255, 39, 232, .20);
+}
+
+.youtube-cta-row .brand-icon {
+  margin-right: 9px;
+  color: currentColor;
+  filter: none;
+}
+
+@media (max-width: 620px) {
+  .youtube-cta-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .youtube-cta-row .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
