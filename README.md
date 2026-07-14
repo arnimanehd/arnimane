@@ -139,3 +139,27 @@ See `sanity-studio/README.md` for setup.
 ## Announcement loading fix
 
 The homepage announcement loader now uses uniquely named functions and variables so it does not conflict with the main website JavaScript. The announcement script reference also uses a new cache version.
+
+
+## Announcement editor update
+
+Added Sanity fields and website support for:
+
+- Categories: Stream Update, Announcement, Personal, Schedule, Community, Website Update, and Event
+- Priority: Normal, Important, or Critical
+- Author name
+- Author sign-off style:
+  - `With Chaos, {author}`
+  - `- {author}`
+- Category icons and labels on announcement cards
+- Priority-specific borders and glow
+- Updated News page filters
+- Renamed Feature on Homepage to Featured Announcement
+- Renamed button fields to Button Label and Button Link
+
+Restart Sanity Studio after replacing the schema:
+
+```cmd
+Ctrl + C
+npm run dev
+```

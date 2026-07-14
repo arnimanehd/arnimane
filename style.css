@@ -1026,3 +1026,111 @@ h1{font-size:50px;line-height:1.02;margin:0 0 18px;text-shadow:0 0 16px rgba(255
     transform: none;
   }
 }
+
+
+/* =========================================================
+   Announcement categories, author sign-offs, and priority
+   ========================================================= */
+
+.announcement-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.announcement-category-icon {
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+.announcement-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.announcement-author {
+  margin: 0 !important;
+  color: #f3c7ef !important;
+  font-size: 14px !important;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: .025em;
+}
+
+.announcement-footer .announcement-button {
+  margin-top: 0;
+}
+
+.announcement-priority {
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: .11em;
+}
+
+.priority-important {
+  border-color: rgba(255, 187, 45, .72) !important;
+  box-shadow:
+    0 0 22px rgba(255, 187, 45, .14),
+    inset 0 0 28px rgba(255, 187, 45, .04);
+}
+
+.priority-important .announcement-priority {
+  color: #ffe6a3;
+  border: 1px solid rgba(255, 187, 45, .62);
+  background: rgba(143, 91, 0, .34);
+}
+
+.priority-critical {
+  border-color: rgba(255, 56, 86, .82) !important;
+  box-shadow:
+    0 0 27px rgba(255, 56, 86, .22),
+    inset 0 0 32px rgba(255, 56, 86, .05);
+}
+
+.priority-critical .announcement-priority {
+  color: #ffd2d9;
+  border: 1px solid rgba(255, 56, 86, .72);
+  background: rgba(137, 7, 32, .44);
+}
+
+.category-stream {
+  border-color: rgba(255, 56, 86, .56);
+}
+
+.category-personal {
+  border-color: rgba(184, 126, 255, .58);
+}
+
+.category-schedule {
+  border-color: rgba(0, 170, 255, .58);
+}
+
+.category-community {
+  border-color: rgba(255, 39, 232, .62);
+}
+
+.category-website {
+  border-color: rgba(90, 225, 255, .58);
+}
+
+.category-event {
+  border-color: rgba(255, 187, 45, .62);
+}
+
+@media (max-width: 620px) {
+  .announcement-footer {
+    align-items: stretch;
+  }
+
+  .announcement-footer .announcement-button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

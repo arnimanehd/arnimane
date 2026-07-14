@@ -35,21 +35,60 @@ function announcementCard(item, featured = false) {
          </a>`
       : "";
 
+  const categoryMeta = {
+    stream: { icon: "🎮", label: "STREAM UPDATE" },
+    announcement: { icon: "📢", label: "ANNOUNCEMENT" },
+    personal: { icon: "👤", label: "PERSONAL" },
+    schedule: { icon: "📅", label: "SCHEDULE" },
+    community: { icon: "💜", label: "COMMUNITY" },
+    website: { icon: "🌐", label: "WEBSITE UPDATE" },
+    event: { icon: "🎉", label: "EVENT" },
+  };
+
+  const category = categoryMeta[item.category] || {
+    icon: "📢",
+    label: String(item.category || "ANNOUNCEMENT").toUpperCase(),
+  };
+
+  const author = item.author || "Arnimane";
+  const signoff =
+    item.signoffStyle === "dash"
+      ? `- ${author}`
+      : `With Chaos, ${author}`;
+
+  const priority = ["normal", "important", "critical"].includes(item.priority)
+    ? item.priority
+    : "normal";
+
   return `
-    <article class="announcement-card ${featured ? "featured" : ""} ${hasImage ? "has-image" : "no-image"}">
+    <article class="announcement-card ${featured ? "featured" : ""} ${hasImage ? "has-image" : "no-image"} priority-${priority}">
       ${image}
+
       <div class="announcement-content">
         <div class="announcement-meta">
-          <span class="announcement-category">
-            ${announcementEscape(item.category || "announcement")}
+          <span class="announcement-category category-${announcementEscape(item.category || "announcement")}">
+            <span class="announcement-category-icon" aria-hidden="true">${category.icon}</span>
+            ${announcementEscape(category.label)}
           </span>
+
+          ${
+            priority !== "normal"
+              ? `<span class="announcement-priority">${priority === "critical" ? "CRITICAL" : "IMPORTANT"}</span>`
+              : ""
+          }
+
           <time datetime="${item.publishedAt}">
             ${announcementDate(item.publishedAt)}
           </time>
         </div>
+
         <h3>${announcementEscape(item.title)}</h3>
         <p>${announcementEscape(item.summary || "")}</p>
-        ${button}
+
+        <div class="announcement-footer">
+          <p class="announcement-author">${announcementEscape(signoff)}</p>
+          ${button}
+        </div>
       </div>
     </article>
   `;
